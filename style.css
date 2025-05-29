@@ -1,6 +1,7 @@
 /* --- 1. Palette and Backgrounds --- */
 body {
-  background: linear-gradient(120deg, #fff 60%, #e0e7ef 100%);
+  /* Keep the body background simple */
+  background: #e0e7ef;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -8,59 +9,14 @@ body {
 
 /* Hero Section Styles */
 .hero {
-  background: linear-gradient(135deg, #0071c5 80%, #e0e7ef 100%);
+  /* Radial gradient background for the hero section only */
+  /* The gradient is centered near the top, where the Intel logo usually is */
+  background: radial-gradient(circle at 50% 60px, #00eaff 0%, #0071c5 60%, #e0e7ef 100%);
   color: white;
   padding: 50px 0 40px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-/* Glowing, moving triangles for a futuristic look */
-.triangle {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0.7;
-  z-index: 1;
-  filter: drop-shadow(0 0 20px #00eaff);
-  animation: float 6s infinite alternate;
-}
-.triangle1 {
-  border-left: 60px solid transparent;
-  border-right: 60px solid transparent;
-  border-bottom: 100px solid rgba(0,255,255,0.25);
-  left: 10%;
-  bottom: -30px;
-  animation-delay: 0s;
-}
-.triangle2 {
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 70px solid rgba(255,255,255,0.18);
-  right: 12%;
-  bottom: 10px;
-  animation-delay: 1s;
-}
-.triangle3 {
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 50px solid rgba(0,255,255,0.18);
-  left: 25%;
-  bottom: 60px;
-  animation-delay: 2s;
-}
-.triangle4 {
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 80px solid rgba(200,220,255,0.18);
-  right: 20%;
-  bottom: 80px;
-  animation-delay: 3s;
-}
-@keyframes float {
-  0% { transform: translateY(0) scale(1);}
-  100% { transform: translateY(-30px) scale(1.1);}
 }
 
 /* Hexagon overlay for hero section */
@@ -204,6 +160,40 @@ body {
   100% { transform: translateY(8px);}
 }
 
+/* Wind turbine icon with rotating color effect for beginners */
+
+/* Style for the wind-turbine icon */
+.icon.wind-turbine {
+  /* Set a size for the icon */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* Use a simple background color to start */
+  background: conic-gradient(
+    #00eaff 0% 33%,
+    #0071c5 33% 66%,
+    #e0e7ef 66% 100%
+  );
+  /* Center the icon in its card */
+  margin: 0 auto 10px auto;
+  /* Add a border for visibility */
+  border: 2px solid #0071c5;
+  /* Add a simple animation to rotate the colors */
+  animation: spinColors 6s linear infinite;
+  /* For demonstration, you can add a shadow */
+  box-shadow: 0 0 8px #00eaff;
+}
+
+/* Animation to rotate the conic-gradient background */
+@keyframes spinColors {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* --- 3. Decorative geometric overlays --- */
 .wireframe-lines {
   position: fixed;
@@ -285,5 +275,76 @@ body {
   }
   .hero {
     padding: 20px 0 15px 0;
+  }
+}
+
+/* Remove previous .recycle-arrow and related animation if present */
+
+/* Base for the recycle icon */
+.icon.recycle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 10px auto;
+  position: relative;
+  box-sizing: border-box;
+;
+}
+
+/* Each stick arrow */
+.recycle-stick {
+  position: absolute;
+  width: 28px;
+  height: 4px;
+  background: #00eaff;
+  border-radius: 2px;
+  opacity: 0;
+  left: 16px;
+  top: 28px;
+  transform-origin: left center;
+  /* Start hidden and short */
+  transform: scaleX(0.1) rotate(-30deg);
+}
+
+/* Arrow heads (simple triangle using border) */
+.recycle-stick::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid #00eaff;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transform: rotate(0deg);
+}
+
+/* Position and animate each arrow to form a triangle */
+.arrow1 {
+  /* Bottom right */
+  transform: scaleX(0.1) rotate(-30deg);
+  animation: traceStick 1.2s 0s forwards;
+}
+.arrow2 {
+  /* Top */
+  transform: scaleX(0.1) rotate(90deg);
+  animation: traceStick 1.2s 1s forwards;
+  background: #0071c5;
+}
+.arrow2::after {
+  border-left-color: #0071c5;
+}
+.arrow3 {
+  /* Bottom left */
+  transform: scaleX(0.1) rotate(210deg);
+  animation: traceStick 1.2s 2s forwards;
+}
+
+/* Animate the stick "drawing" and fading in */
+@keyframes traceStick {
+  to {
+    opacity: 1;
+    transform: scaleX(1) rotate(var(--angle, 0deg));
   }
 }
