@@ -268,10 +268,11 @@ body {
 /* Hide the paragraph by default and style it as a popup */
 .timeline .card p {
   display: none;           /* Hide by default */
-  position: absolute;      /* Position over the card */
-  top: 20px;               /* Move down a bit from the top */
+  position: absolute;      /* Position inside the card */
   left: 10px;
   right: 10px;
+  bottom: 16px;            /* Place it near the bottom */
+  top: auto;               /* Remove the top positioning */
   background: #fff;
   color: #0071c5;
   border: 2px solid #00eaff;
