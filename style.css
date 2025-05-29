@@ -92,7 +92,7 @@ body {
   }
 }
 .goal-card:hover {
-  box-shadow: 0 6px 24px #00eaff55;
+  box-shadow: 0 6px 24px #03596191;
   transform: translateY(-6px) scale(1.03);
 }
 
@@ -102,7 +102,7 @@ body {
   width: 48px;
   height: 48px;
   position: relative;
-}
+} /*
 .wind-turbine::before {
   content: '';
   display: block;
@@ -120,8 +120,8 @@ body {
   width: 24px; height: 24px;
   border-radius: 50%;
   border: 2px solid #00eaff;
-  animation: spin 2s linear infinite;
-}
+  animation: spin 4s linear infinite; 
+}*/
 @keyframes spin {
   100% { transform: rotate(360deg);}
 }
@@ -138,6 +138,7 @@ body {
   border-right: none;
   transform: rotate(-45deg);
   border-color: #00eaff;
+  animation: spin 6s alternate-reverse infinite;
 }
 .recycle::after {
   width: 28px; height: 28px;
@@ -146,6 +147,7 @@ body {
   border-left: none;
   transform: rotate(-45deg);
   border-color: #0071c5;
+  animation: spin 6s alternate-reverse infinite;
 }
 .water-drop {
   background: linear-gradient(180deg, #00eaff 60%, #e0e7ef 100%);
@@ -162,37 +164,24 @@ body {
 
 /* Wind turbine icon with rotating color effect for beginners */
 
-/* Style for the wind-turbine icon */
+/* Style for the wind-turbine icon (no lightning bolt, just a blank icon for beginners) */
 .icon.wind-turbine {
-  /* Set a size for the icon */
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  /* Use a simple background color to start */
-  background: conic-gradient(
-    #00eaff 0% 33%,
-    #0071c5 33% 66%,
-    #e0e7ef 66% 100%
-  );
-  /* Center the icon in its card */
+  width: 48px;
+  height: 48px;
+  background: transparent; /* No background */
+  border: none;
   margin: 0 auto 10px auto;
-  /* Add a border for visibility */
-  border: 2px solid #0071c5;
-  /* Add a simple animation to rotate the colors */
-  animation: spinColors 6s linear infinite;
-  /* For demonstration, you can add a shadow */
-  box-shadow: 0 0 8px #00eaff;
+  position: relative;
+  box-shadow: none;
 }
 
-/* Animation to rotate the conic-gradient background */
-@keyframes spinColors {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+/* Remove any lightning bolt shape or pseudo-elements */
+.icon.wind-turbine::before,
+.icon.wind-turbine::after {
+  content: none;
+  display: none;
 }
+
 
 /* --- 3. Decorative geometric overlays --- */
 .wireframe-lines {
@@ -278,73 +267,29 @@ body {
   }
 }
 
-/* Remove previous .recycle-arrow and related animation if present */
-
-/* Base for the recycle icon */
-.icon.recycle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: 0 auto 10px auto;
-  position: relative;
-  box-sizing: border-box;
-;
+/* Eco Plug icon: makes sure the SVG fits well in the card */
+.icon.eco-plug {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon.eco-plug svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-/* Each stick arrow */
-.recycle-stick {
-  position: absolute;
-  width: 28px;
-  height: 4px;
-  background: #00eaff;
-  border-radius: 2px;
-  opacity: 0;
-  left: 16px;
-  top: 28px;
-  transform-origin: left center;
-  /* Start hidden and short */
-  transform: scaleX(0.1) rotate(-30deg);
+/* Make the eco plug's circular cord fade in and out */
+.eco-plug-cord {
+  /* This animation makes the cord fade in and out smoothly */
+  animation: cordFade 2s infinite alternate;
 }
 
-/* Arrow heads (simple triangle using border) */
-.recycle-stick::after {
-  content: '';
-  position: absolute;
-  right: -6px;
-  top: -4px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid #00eaff;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  transform: rotate(0deg);
-}
-
-/* Position and animate each arrow to form a triangle */
-.arrow1 {
-  /* Bottom right */
-  transform: scaleX(0.1) rotate(-30deg);
-  animation: traceStick 1.2s 0s forwards;
-}
-.arrow2 {
-  /* Top */
-  transform: scaleX(0.1) rotate(90deg);
-  animation: traceStick 1.2s 1s forwards;
-  background: #0071c5;
-}
-.arrow2::after {
-  border-left-color: #0071c5;
-}
-.arrow3 {
-  /* Bottom left */
-  transform: scaleX(0.1) rotate(210deg);
-  animation: traceStick 1.2s 2s forwards;
-}
-
-/* Animate the stick "drawing" and fading in */
-@keyframes traceStick {
-  to {
-    opacity: 1;
-    transform: scaleX(1) rotate(var(--angle, 0deg));
-  }
+/* Keyframes for fading in and out */
+@keyframes cordFade {
+  0% { opacity: 1; }
+  100% { opacity: 0.2; }
 }

@@ -34,19 +34,10 @@
 
   <!-- Sustainability Goals Section with animated icons and geometric overlays -->
   <section class="goals-section">
-    <!-- Card 1: Renewable Energy -->
-    <div class="goal-card fade-in">
-      <div class="icon wind-turbine"></div>
-      <h2>Renewable Energy</h2>
-      <p>Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
-    </div>
+ 
     <!-- Card 2: Recycling -->
     <div class="goal-card fade-in delay1">
-      <div class="icon recycle">
-        <div class="recycle-stick arrow1"></div>
-        <div class="recycle-stick arrow2"></div>
-        <div class="recycle-stick arrow3"></div>
-      </div>
+      <div class="icon recycle"></div>
       <h2>Recycling</h2>
       <p>Intel recycles materials and promotes a circular economy to minimize waste.</p>
     </div>
@@ -56,11 +47,40 @@
       <h2>Water Conservation</h2>
       <p>Intel conserves water and invests in water restoration projects worldwide.</p>
     </div>
+    <!-- Card 1: Eco Plug (NEW) -->
+    <div class="goal-card fade-in delay3">
+      <div class="icon eco-plug">
+        <!--
+          Beginner-friendly SVG for an eco plug:
+          - The circular cord is at the bottom.
+          - The plug is centered above the circle.
+          - The two leaves are together, angled to look natural, and do not touch the plug prongs.
+        -->
+       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular cord -->
+   
+  <path d="M14 44c0 9.94 8.06 18 18 18s18-8.06 18-18" fill="none" stroke="#4CAF50" stroke-width="4"/>
+  
+  
+  
+  <path d="M20 38c0-6 3-12 10-16-2 6-1 13-6 20-4-2-4-4-4-4z" fill="#4CAF50"/>
+  <path d="M10 30c4 2 8 4 10 10-6-1-11-2-16-10 3 0 4 0 6 0z" fill="#4CAF50"/>
+  
+  <!-- Plug prongs -->
+  <rect x="44" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+  <rect x="52" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+  
+  <!-- Plug base -->
+  <rect x="42" y="24" width="16" height="14" rx="3" fill="#4CAF50"/>
+</svg>
+      </div>
+      <h2>Renewable Energy</h2>
+      <p>Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
+    </div>
   </section>
 
   <!-- Decorative geometric overlays for background tech effect -->
   <div class="wireframe-lines"></div>
-
   <!-- Timeline Section (as before) -->
   <section class="timeline-container">
     <div class="timeline">
