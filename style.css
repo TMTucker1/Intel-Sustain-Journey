@@ -1,31 +1,232 @@
-/* Add your CSS here */
+/* --- 1. Palette and Backgrounds --- */
+body {
+  background: linear-gradient(120deg, #fff 60%, #e0e7ef 100%);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
 /* Hero Section Styles */
 .hero {
-  /* Simple blue background to represent Intel */
-  background: #0071c5; /* Removed background image */
+  background: linear-gradient(135deg, #0071c5 80%, #e0e7ef 100%);
   color: white;
-  padding: 40px 0 30px 0;
+  padding: 50px 0 40px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glowing, moving triangles for a futuristic look */
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0.7;
+  z-index: 1;
+  filter: drop-shadow(0 0 20px #00eaff);
+  animation: float 6s infinite alternate;
+}
+.triangle1 {
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid rgba(0,255,255,0.25);
+  left: 10%;
+  bottom: -30px;
+  animation-delay: 0s;
+}
+.triangle2 {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid rgba(255,255,255,0.18);
+  right: 12%;
+  bottom: 10px;
+  animation-delay: 1s;
+}
+.triangle3 {
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid rgba(0,255,255,0.18);
+  left: 25%;
+  bottom: 60px;
+  animation-delay: 2s;
+}
+.triangle4 {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 80px solid rgba(200,220,255,0.18);
+  right: 20%;
+  bottom: 80px;
+  animation-delay: 3s;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1);}
+  100% { transform: translateY(-30px) scale(1.1);}
+}
+
+/* Hexagon overlay for hero section */
+.hexagon-overlay {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 70px;
+  background: rgba(0,255,255,0.08);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  z-index: 1;
+  animation: hexPulse 3s infinite alternate;
+}
+@keyframes hexPulse {
+  0% { opacity: 0.08; transform: translateX(-50%) scale(1);}
+  100% { opacity: 0.18; transform: translateX(-50%) scale(1.08);}
 }
 
 /* Make the logo a bit smaller and centered */
 .intel-logo {
   width: 120px;
   margin-bottom: 10px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Hero content above triangles */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- 2. Sustainability Goals Section --- */
+.goals-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.7);
+  padding: 30px 10px;
+  margin: 0 auto 30px auto;
+  border-radius: 18px;
+  max-width: 900px;
+  box-shadow: 0 4px 24px rgba(0,113,197,0.08);
+}
+
+/* Each goal card */
+.goal-card {
+  background: rgba(240,245,255,0.85);
+  border: 1px solid #e0e7ef;
+  border-radius: 12px;
+  padding: 18px 14px;
+  width: 220px;
+  box-shadow: 0 2px 12px rgba(0,113,197,0.07);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  /* Fade-in animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+.goal-card.fade-in { animation-delay: 0.2s; }
+.goal-card.fade-in.delay1 { animation-delay: 0.6s; }
+.goal-card.fade-in.delay2 { animation-delay: 1s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.goal-card:hover {
+  box-shadow: 0 6px 24px #00eaff55;
+  transform: translateY(-6px) scale(1.03);
+}
+
+/* Animated icons (simple CSS for beginners) */
+.icon {
+  margin: 0 auto 12px auto;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+.wind-turbine::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 22px; top: 12px;
+  width: 4px; height: 24px;
+  background: #0071c5;
+  border-radius: 2px;
+}
+.wind-turbine::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 12px; top: 0;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid #00eaff;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}
+.recycle::before, .recycle::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #0071c5;
+  border-radius: 2px;
+}
+.recycle::before {
+  width: 28px; height: 28px;
+  left: 10px; top: 10px;
+  border-bottom: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  border-color: #00eaff;
+}
+.recycle::after {
+  width: 28px; height: 28px;
+  left: 10px; top: 10px;
+  border-top: none;
+  border-left: none;
+  transform: rotate(-45deg);
+  border-color: #0071c5;
+}
+.water-drop {
+  background: linear-gradient(180deg, #00eaff 60%, #e0e7ef 100%);
+  width: 24px;
+  height: 36px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 100% 100%;
+  margin: 0 auto;
+  animation: drop 1.2s infinite alternate;
+}
+@keyframes drop {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(8px);}
+}
+
+/* --- 3. Decorative geometric overlays --- */
+.wireframe-lines {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(120deg, rgba(0,113,197,0.04) 1px, transparent 1px),
+    linear-gradient(60deg, rgba(0,113,197,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
 /* Timeline Container */
 .timeline-container {
   margin: 30px 0;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto;
   padding-bottom: 20px;
 }
 
 /* Timeline Styles */
 .timeline {
-  display: flex; /* Arrange cards in a row */
-  gap: 20px;     /* Space between cards */
+  display: flex;
+  gap: 20px;
   padding: 20px;
   min-width: 700px;
 }
@@ -40,16 +241,16 @@
   max-width: 250px;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 1.2s;
 }
-
-/* Card hover effect for interactivity */
 .card:hover {
   transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 16px #00eaff55;
   background: #e3f2fd;
 }
-
-/* Card image style */
 .card img {
   width: 100%;
   border-radius: 6px;
@@ -65,6 +266,13 @@
 }
 
 /* Responsive: Stack timeline vertically on small screens */
+@media (max-width: 900px) {
+  .goals-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
 @media (max-width: 600px) {
   .timeline {
     flex-direction: column;
@@ -76,7 +284,6 @@
     min-width: 90vw;
   }
   .hero {
-    background-size: 100px;
     padding: 20px 0 15px 0;
   }
 }
