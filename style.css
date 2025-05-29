@@ -11,7 +11,7 @@ body {
 .hero {
   /* Radial gradient background for the hero section only */
   /* The gradient is centered near the top, where the Intel logo usually is */
-  background: radial-gradient(circle at 50% 60px, #00eaff 0%, #0071c5 60%, #e0e7ef 100%);
+  background: radial-gradient(circle at 50% 60px, #97edf5 0%, #0071c5 65%, #d0ddeb 100%);
   color: white;
   padding: 50px 0 40px 0;
   text-align: center;
@@ -159,7 +159,7 @@ body {
 }
 @keyframes drop {
   0% { transform: translateY(0);}
-  100% { transform: translateY(8px);}
+  100% { transform: translateY(10px);}
 }
 
 /* Wind turbine icon with rotating color effect for beginners */
@@ -200,6 +200,9 @@ body {
   margin: 30px 0;
   overflow-x: auto;
   padding-bottom: 20px;
+  /* Add scroll snap for the timeline container and cards */
+  scroll-snap-type: x mandatory; /* Enable horizontal snap */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
 
 /* Timeline Styles */
@@ -224,6 +227,8 @@ body {
   transform: translateY(30px);
   animation: fadeInUp 1s forwards;
   animation-delay: 1.2s;
+  /* Add scroll snap for the timeline container and cards */
+  scroll-snap-align: start;   /* Snap each card to the start */
 }
 .card:hover {
   transform: translateY(-8px) scale(1.04);
@@ -244,6 +249,50 @@ body {
   margin-top: 10px;
 }
 
+/* Beginner-friendly: Hide timeline card paragraphs by default */
+.timeline .card p {
+  display: none; /* Hide the paragraph text */
+}
+
+/* Show the paragraph when the card is hovered */
+.timeline .card:hover p {
+  display: block; /* Show the paragraph on hover */
+}
+
+/* Make each timeline card a positioning context */
+.timeline .card {
+  position: relative; /* So the popup is positioned over this card */
+  overflow: visible;  /* Allow the popup to go outside the card if needed */
+}
+
+/* Hide the paragraph by default and style it as a popup */
+.timeline .card p {
+  display: none;           /* Hide by default */
+  position: absolute;      /* Position over the card */
+  top: 20px;               /* Move down a bit from the top */
+  left: 10px;
+  right: 10px;
+  background: #fff;
+  color: #0071c5;
+  border: 2px solid #00eaff;
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 10;
+  box-shadow: 0 4px 16px #00eaff33;
+  font-size: 1em;
+}
+
+/* Show the popup paragraph only when hovering THIS card */
+.timeline .card:hover p {
+  display: block;
+}
+
+/* Make sure the card image is not covered by the popup when not hovered */
+.timeline .card img {
+  position: relative;
+  z-index: 1;
+}
+
 /* Responsive: Stack timeline vertically on small screens */
 @media (max-width: 900px) {
   .goals-section {
@@ -254,12 +303,12 @@ body {
 }
 @media (max-width: 600px) {
   .timeline {
-    flex-direction: column;
-    align-items: center;
-    min-width: 0;
+    flex-direction: column;   /* Stack cards vertically */
+    align-items: center;      /* Center the cards */
+    min-width: 0;             /* Allow shrinking */
   }
   .card {
-    max-width: 90vw;
+    max-width: 90vw;          /* Make cards fit the screen */
     min-width: 90vw;
   }
   .hero {
@@ -282,14 +331,24 @@ body {
   display: block;
 }
 
-/* Make the eco plug's circular cord fade in and out */
-.eco-plug-cord {
-  /* This animation makes the cord fade in and out smoothly */
-  animation: cordFade 2s infinite alternate;
+/* Make the plug base of the eco plug icon fade in and out from one end to the other, then start over at the top again */
+.cord {
+  /* This animation fades in, stays visible, then fades out and repeats */
+  animation: plugSlowFade 3s infinite linear ;
 }
 
-/* Keyframes for fading in and out */
-@keyframes cordFade {
-  0% { opacity: 1; }
+/* Keyframes for fading in, staying, fading out, and restarting */
+@keyframes plugSlowFade {
+  0%   { opacity: 0.2; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
   100% { opacity: 0.2; }
+}
+
+/* Beginner-friendly: Style the water drop image to look like an icon */
+.water-drop-img {
+  width: 48px;         /* Set the width of the icon */
+  height: 48px;        /* Set the height of the icon */
+  display: block;      /* Make sure it behaves like a block element */
+  margin: 0 auto 12px auto; /* Center the icon and add space below */
 }

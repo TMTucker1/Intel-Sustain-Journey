@@ -43,7 +43,7 @@
     </div>
     <!-- Card 3: Water Conservation -->
     <div class="goal-card fade-in delay2">
-      <div class="icon water-drop"></div>
+      <div class="water-drop"></div>
       <h2>Water Conservation</h2>
       <p>Intel conserves water and invests in water restoration projects worldwide.</p>
     </div>
@@ -56,23 +56,58 @@
           - The plug is centered above the circle.
           - The two leaves are together, angled to look natural, and do not touch the plug prongs.
         -->
-       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Circular cord -->
-   
-  <path d="M14 44c0 9.94 8.06 18 18 18s18-8.06 18-18" fill="none" stroke="#4CAF50" stroke-width="4"/>
-  
-  
-  
-  <path d="M20 38c0-6 3-12 10-16-2 6-1 13-6 20-4-2-4-4-4-4z" fill="#4CAF50"/>
-  <path d="M10 30c4 2 8 4 10 10-6-1-11-2-16-10 3 0 4 0 6 0z" fill="#4CAF50"/>
-  
-  <!-- Plug prongs -->
-  <rect x="44" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
-  <rect x="52" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
-  
-  <!-- Plug base -->
-  <rect x="42" y="24" width="16" height="14" rx="3" fill="#4CAF50"/>
-</svg>
+      <style>
+  .icon-wrapper {
+    position: relative;
+    width: 128px;
+    height: 128px;
+  }
+  .icon-wrapper div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<div class="icon-wrapper">
+  <div class="cord">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 44c0 9.94 8.06 18 18 18s18-8.06 18-18" fill="none" stroke="#4CAF50" stroke-width="4"/>
+    </svg>
+  </div>
+
+  <div class="leaf1">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 38c0-6 3-12 10-16-2 6-1 13-6 20-4-2-4-4-4-4z" fill="#4CAF50"/>
+    </svg>
+  </div>
+
+  <div class="leaf2">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 30c4 2 8 4 10 10-6-1-11-2-16-10 3 0 4 0 6 0z" fill="#4CAF50"/>
+    </svg>
+  </div>
+
+  <div class="plug-prong1">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="44" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+    </svg>
+  </div>
+
+  <div class="plug-prong2">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="52" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+    </svg>
+  </div>
+
+  <div class="plug-base">
+    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <rect x="42" y="24" width="16" height="14" rx="3" fill="#4CAF50"/>
+    </svg>
+  </div>
+</div>
       </div>
       <h2>Renewable Energy</h2>
       <p>Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
