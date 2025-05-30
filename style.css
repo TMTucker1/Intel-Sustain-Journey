@@ -377,7 +377,7 @@ body {
 @keyframes plugSlowFade {
   0%   { opacity: 0.2; }
   20%  { opacity: 1; }
-  80%  { opacity: 1; }
+  
   100% { opacity: 0.2; }
 }
 
@@ -387,4 +387,30 @@ body {
   height: 48px;        /* Set the height of the icon */
   display: block;      /* Make sure it behaves like a block element */
   margin: 0 auto 12px auto; /* Center the icon and add space below */
+}
+
+/* Learn More Button Styles */
+.learn-more-btn {
+  display: block; /* Make the button take up its own line */
+  width: 180px;   /* Set a fixed width */
+  margin: 40px auto 30px auto; /* Center the button at the bottom with space */
+  padding: 14px 0;
+  background: #0071c5; /* Intel Blue */
+  color: #fff;
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px #0071c544;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  letter-spacing: 1px;
+}
+
+/* Add a glowing effect on hover */
+.learn-more-btn:hover {
+  background: #00eaff;
+  color: #0071c5;
+  box-shadow: 0 0 16px #00eaff, 0 4px 24px #0071c544;
+  transform: scale(1.05);
 }
