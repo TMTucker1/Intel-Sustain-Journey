@@ -11,7 +11,7 @@ body {
 .hero {
   /* Radial gradient background for the hero section only */
   /* The gradient is centered near the top, where the Intel logo usually is */
-  background: radial-gradient(circle at 50% 60px, #97edf5 0%, #0071c5 65%, #d0ddeb 100%);
+  background: radial-gradient(circle at 60% 60px, #97edf5 0%, #0071c5 65%, #d0ddeb 100%);
   color: white;
   padding: 50px 0 40px 0;
   text-align: center;
@@ -247,6 +247,41 @@ body {
   color: #555;
   font-size: 1em;
   margin-top: 10px;
+  /* By default, keep it static for desktop */
+  position: static;
+  background: none;
+  border: none;
+  box-shadow: none;
+  transition: none;
+}
+
+/* On small screens, make the tip float and move left/right */
+@media (max-width: 600px) {
+  .timeline-tip {
+    /* Make the tip float above the timeline and move side to side */
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    width: 90vw;
+    margin: 0 auto;
+    background: rgba(0,113,197,0.95);
+    color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px #0071c555;
+    padding: 12px 10px;
+    font-size: 1.1em;
+    z-index: 100;
+    animation: tipMove 3s infinite alternate;
+    transition: background 0.3s, color 0.3s;
+  }
+}
+
+/* Keyframes for moving the tip left and right */
+@keyframes tipMove {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(20px); }
+  100% { transform: translateX(-20px); }
 }
 
 /* Beginner-friendly: Hide timeline card paragraphs by default */
