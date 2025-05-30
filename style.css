@@ -10,8 +10,8 @@ body {
 /* Hero Section Styles */
 .hero {
   /* Radial gradient background for the hero section only */
-  /* The gradient is centered near the top, where the Intel logo usually is */
-  background: radial-gradient(circle at 60% 60px, #97edf5 0%, #0071c5 65%, #d0ddeb 100%);
+  /* The gradient is perfectly centered in the hero section */
+  background: radial-gradient(circle at center, #97edf5 20%, #0071c5 65%, #d0ddeb 100%);
   color: white;
   padding: 50px 0 40px 0;
   text-align: center;
