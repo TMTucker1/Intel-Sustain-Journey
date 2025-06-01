@@ -210,7 +210,9 @@ body {
   display: flex;
   gap: 20px;
   padding: 20px;
-  min-width: 700px;
+  min-width: 1040px; /* 4 cards * 250px + 3 gaps * 20px = 1040px */
+  max-width: 1040px; /* Prevents more than 4 cards showing at once on desktop */
+  overflow-x: auto;  /* Allow horizontal scroll if needed */
 }
 
 /* Timeline Card Styles */
