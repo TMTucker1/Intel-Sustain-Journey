@@ -183,7 +183,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 20px;
   width: 300px;        /* Fixed width for desktop */
-  min-height: 350px;   /* Taller to fit content */
+  min-height: 375px;   /* Taller to fit content */
   max-height: none;    /* Remove max height restriction */
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
@@ -214,10 +214,10 @@ body {
   display: none; /* Hide by default */
   position: absolute; /* Position relative to the card */
   left: 50%;          /* Center horizontally */
-  bottom: -10px;      /* Place just below the card */
+  bottom: 50%;      /* Place just below the card */
   transform: translate(-50%, 100%); /* Move below the card */
   min-width: 220px;
-  max-width: 260px;
+  max-width: 350px;
   background: #fff;
   color: #0071c5; /* Intel blue text */
   border: 2px solid #0071c5; /* Intel blue border */
@@ -256,6 +256,6 @@ body {
   }
   
   .card p {
-    font-size: 14px;      /* Slightly smaller text on mobile */
+    font-size: 12px;      /* Slightly smaller text on mobile */
   }
 }
