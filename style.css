@@ -1,7 +1,7 @@
 /* --- 1. Palette and Backgrounds --- */
 body {
   /* Keep the body background simple */
-  background: #e0e7ef;
+  background: #d5e0ec;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -53,49 +53,25 @@ body {
   box-shadow: 0 4px 24px rgba(0,113,197,0.08);
 }
 
-/* Each goal card */
-.goal-card {
-  background: rgba(240,245,255,0.85);
-  border: 1px solid #e0e7ef;
-  border-radius: 12px;
-  padding: 18px 14px;
-  width: 220px;
-  /* Set a fixed height to make all cards the same size */
-  height: 350px; /* Adjust this value as needed */
-  box-shadow: 0 2px 12px rgba(0,113,197,0.07);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s, transform 0.3s;
-  /* Fade-in animation */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s forwards;
+/* Style for goal cards */
+.card.goal-card {
+    background: rgba(240,245,255,0.85);
+    border: 1px solid #e0e7ef;
+    border-radius: 12px;
+    padding: 18px 14px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    min-height: 200px; /* Minimum height on all screens */
+    height: auto; /* Allow height to adjust to content */
 }
-.goal-card.fade-in { animation-delay: 0.2s; }
-.goal-card.fade-in.delay1 { animation-delay: 0.6s; }
-.goal-card.fade-in.delay2 { animation-delay: 1s; }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Hover effects for goal cards */
+.card.goal-card:hover {
+    background-color: #f5f5f5;
+    border: 2px solid #0071c5;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 113, 197, 0.15);
 }
-/* .goal-card:hover {
-  box-shadow: 0 6px 24px #03596191;
-  transform: translateY(-6px) scale(1.03);
-}
-.goal-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 6px 16px #00eaff55;
-  background: #e3f2fd;
-}
-.goal-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}*/
 
 /* Animated icons (simple CSS for beginners) */
 .icon {
@@ -144,7 +120,36 @@ body {
   100% { transform: translateY(10px);}
 }
 
+/* Style for the renewable energy icon */
+.renewable-energy-icon {
+  width: 48px; /* Icon container size */
+  height: 48px;
+  margin: 0 auto 12px auto;
+  display: block;
+  border-radius: 50%;
+  background: white; /* Add background to show pulse effect */
+  animation: lightPulse 6s infinite;
+}
 
+.renewable-energy-icon img {
+  width: 100%; /* Make image fill container */
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Adjust the pulse animation to be more visible */
+@keyframes lightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 197, 0.7); /* More visible Intel blue */
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 113, 197, 0); /* Smaller radius, fade out */
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 197, 0);
+  }
+}
 
 /* Timeline Container */
 .timeline-container {
@@ -152,7 +157,7 @@ body {
   overflow-x: auto;
   padding-bottom: 20px;
   width: 90%;           /* Changed from fixed width to percentage */
-  max-width: 1200px;    /* Maximum width on large screens */
+  max-width: 1300px;    /* Maximum width on large screens */
 }
 
 /* Timeline Styles */
@@ -236,6 +241,17 @@ body {
 
 /* Adjust size on smaller screens */
 @media (max-width: 600px) {
+  /* Make the timeline cards stack on smaller screens */
+  .timeline {
+    flex-direction: column; /* Stack the cards vertically */
+  }
+
+  .timeline-card {
+    width: 90%; /* Make the cards take up most of the width */
+    margin: 0 auto; /* Center the cards */
+    margin-bottom: 20px; /* Add some space between the cards */
+  }
+
   .card {
     width: 90vw;       /* Full width on mobile */
     min-height: 300px; /* Slightly shorter on mobile */
@@ -254,10 +270,29 @@ body {
   }
 }
 
-/* Style for the renewable energy icon */
-.renewable-energy-icon {
-  width: 48px; /* Adjust as needed */
-  height: 48px; /* Adjust as needed */
-  margin: 0 auto 12px auto; /* Center the icon and add some space below */
-  display: block; /* Ensure proper centering */
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .card.goal-card {
+        /* Adjust padding on mobile */
+        padding: 12px 10px;
+        
+        /* Reduce icon sizes on mobile */
+        .icon, .water-drop, .renewable-energy-icon {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 8px;
+        }
+        
+        /* Reduce text size on mobile */
+        h2.h5 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+    }
 }
+

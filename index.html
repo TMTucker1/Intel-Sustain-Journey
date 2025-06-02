@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <!-- Hero Section with glowing triangles and geometric overlays -->
+  <!-- Hero Section  -->
   <header class="hero">
      
     <div class="hero-content">
@@ -28,11 +28,11 @@
   </header>
 
   <!-- Sustainability Goals Section using Bootstrap for layout -->
-  <section class="container my-5">
+  <section class="container my-3 my-md-5">
     <div class="row justify-content-center">
       <!-- Recycling Card -->
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card text-center shadow-lg">
+      <div class="col-12 col-md-4 mb-3">
+        <div class="card goal-card text-center shadow-lg h-100">
           <div class="card-body">
             <!-- Custom icon using your CSS -->
             <div class="icon recycle mx-auto mb-3"></div>
@@ -42,8 +42,8 @@
         </div>
       </div>
       <!-- Water Conservation Card -->
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card text-center shadow-lg">
+      <div class="col-12 col-md-4 mb-3">
+        <div class="card goal-card text-center shadow-lg h-100">
           <div class="card-body">
             <div class="water-drop mx-auto mb-3"></div>
             <h2 class="h5">Water Conservation</h2>
@@ -52,11 +52,13 @@
         </div>
       </div>
       <!-- Renewable Energy Card with SVG Eco Plug -->
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card text-center shadow-lg">
+      <div class="col-12 col-md-4 mb-3">
+        <div class="card goal-card text-center shadow-lg h-100">
           <div class="card-body">
-            <!-- Renewable Energy Icon -->
-            <img src="img/renewable-energy-icon.jpg" alt="Renewable Energy Icon" class="mx-auto mb-3" style="width: 48px; height: 48px;">
+            <!-- Renewable Energy Icon with proper class -->
+            <div class="renewable-energy-icon">
+              <img src="img/renewable-energy-icon.jpg" alt="Renewable Energy Icon">
+            </div>
             <h2 class="h5">Renewable Energy</h2>
             <p class="card-text">Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
           </div>
