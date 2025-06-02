@@ -91,10 +91,20 @@ body {
     transform: translateY(0);
   }
 }
-.goal-card:hover {
+/* .goal-card:hover {
   box-shadow: 0 6px 24px #03596191;
   transform: translateY(-6px) scale(1.03);
 }
+.goal-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 6px 16px #00eaff55;
+  background: #e3f2fd;
+}
+.goal-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}*/
 
 /* Animated icons (simple CSS for beginners) */
 .icon {
@@ -102,26 +112,7 @@ body {
   width: 48px;
   height: 48px;
   position: relative;
-} /*
-.wind-turbine::before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 22px; top: 12px;
-  width: 4px; height: 24px;
-  background: #0071c5;
-  border-radius: 2px;
-}
-.wind-turbine::after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 12px; top: 0;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  border: 2px solid #00eaff;
-  animation: spin 4s linear infinite; 
-}*/
+} 
 @keyframes spin {
   100% { transform: rotate(360deg);}
 }
@@ -164,58 +155,25 @@ body {
 
 /* Wind turbine icon with rotating color effect for beginners */
 
-/* Style for the wind-turbine icon (no lightning bolt, just a blank icon for beginners) */
-.icon.wind-turbine {
-  width: 48px;
-  height: 48px;
-  background: transparent; /* No background */
-  border: none;
-  margin: 0 auto 10px auto;
-  position: relative;
-  box-shadow: none;
-}
 
-/* Remove any lightning bolt shape or pseudo-elements */
-.icon.wind-turbine::before,
-.icon.wind-turbine::after {
-  content: none;
-  display: none;
-}
-
-
-/* --- 3. Decorative geometric overlays --- */
-.wireframe-lines {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(120deg, rgba(0,113,197,0.04) 1px, transparent 1px),
-    linear-gradient(60deg, rgba(0,113,197,0.04) 1px, transparent 1px);
-  background-size: 80px 80px;
-}
 
 /* Timeline Container */
 .timeline-container {
-  margin: 30px auto;         /* Center the container horizontally */
+  margin: 30px auto;
   overflow-x: auto;
   padding-bottom: 20px;
-  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-  width: 1200px;             /* 4 cards * 250px + 3 gaps * 20px = 1120px */
-  max-width: 100%;           /* Prevents overflow on small screens */
+  width: 90%;           /* Changed from fixed width to percentage */
+  max-width: 1200px;    /* Maximum width on large screens */
 }
 
 /* Timeline Styles */
 .timeline {
   display: flex;
-  gap: 20px;
+  gap: 24px;           /* Slightly bigger gap between cards */
   padding: 20px;
-  min-width: 1200px; /* 4 cards * 250px + 3 gaps * 20px = 1120px */
-  max-width: 1120px;
-  overflow-x: auto;
+  min-width: min-content; /* Changed from fixed width */
   margin: 0 auto;
-  scroll-snap-type: x mandatory; /* Make sure snap is also set here for some browsers */
+  scroll-snap-type: x mandatory;
 }
 
 /* Timeline Card Styles */
@@ -223,199 +181,81 @@ body {
   background: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 16px;
-  min-width: 250px;
-  max-width: 250px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 20px;
+  width: 300px;        /* Fixed width for desktop */
+  min-height: 350px;   /* Taller to fit content */
+  max-height: none;    /* Remove max height restriction */
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s forwards;
-  animation-delay: 1.2s;
-  /* Make each card a snap point */
-  scroll-snap-align: start;
-}
-.card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 6px 16px #00eaff55;
-  background: #e3f2fd;
-}
-.card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  font-size: 16px;         /* Base font size for card content */
 }
 
-/* Timeline tip text */
-.timeline-tip {
-  text-align: center;
-  color: #555;
-  font-size: 1em;
-  margin-top: 10px;
-  /* By default, keep it static for desktop */
-  position: static;
-  background: none;
-  border: none;
-  box-shadow: none;
-  transition: none;
+.card h2 {
+  font-size: 24px;         /* Larger size for years */
+  margin-bottom: 4px;      /* Small space between year and event title */
+  color: #0071c5;         /* Intel blue for years */
 }
 
-/* On small screens, make the tip float and move left/right */
-@media (max-width: 600px) {
-  .timeline-tip {
-    /* Make the tip float above the timeline and move side to side */
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-    width: 90vw;
-    margin: 0 auto;
-    background: rgba(0,113,197,0.95);
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 16px #0071c555;
-    padding: 12px 10px;
-    font-size: 1.1em;
-    z-index: 100;
-    animation: tipMove 3s infinite alternate;
-    transition: background 0.3s, color 0.3s;
-  }
-}
-
-/* Keyframes for moving the tip left and right */
-@keyframes tipMove {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(20px); }
-  100% { transform: translateX(-20px); }
-}
-
-/* Beginner-friendly: Hide timeline card paragraphs by default */
-.timeline .card p {
-  display: none; /* Hide the paragraph text */
-}
-
-/* Show the paragraph when the card is hovered */
-.timeline .card:hover p {
-  display: block; /* Show the paragraph on hover */
-}
-
-/* Make each timeline card a positioning context */
-.timeline .card {
-  position: relative; /* So the popup is positioned over this card */
-  overflow: visible;  /* Allow the popup to go outside the card if needed */
-}
-
-/* Hide the paragraph by default and style it as a popup */
-.timeline .card p {
-  display: none;           /* Hide by default */
-  position: absolute;      /* Position inside the card */
-  left: 10px;
-  right: 10px;
-  bottom: 16px;            /* Place it near the bottom */
-  top: auto;               /* Remove the top positioning */
-  background: #fff;
-  color: #0071c5;
-  border: 2px solid #00eaff;
-  border-radius: 8px;
-  padding: 12px;
-  z-index: 10;
-  box-shadow: 0 4px 16px #00eaff33;
-  font-size: 1em;
-}
-
-/* Show the popup paragraph only when hovering THIS card */
-.timeline .card:hover p {
-  display: block;
-}
-
-/* Make sure the card image is not covered by the popup when not hovered */
-.timeline .card img {
-  position: relative;
-  z-index: 1;
-}
-
-/* Responsive: Stack timeline vertically on small screens */
-@media (max-width: 900px) {
-  .goals-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-}
-@media (max-width: 600px) {
-  .timeline {
-    flex-direction: column;   /* Stack cards vertically */
-    align-items: center;      /* Center the cards */
-    min-width: 0;             /* Allow shrinking */
-  }
-  .card {
-    max-width: 90vw;          /* Make cards fit the screen */
-    min-width: 90vw;
-  }
-  .hero {
-    padding: 20px 0 15px 0;
-  }
-}
-
-/* Eco Plug icon: makes sure the SVG fits well in the card */
-.icon.eco-plug {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 12px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon.eco-plug svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Make the plug base of the eco plug icon fade in and out from one end to the other, then start over at the top again */
-.cord {
-  /* This animation fades in, stays visible, then fades out and repeats */
-  animation: plugSlowFade 3s infinite linear ;
-}
-
-/* Keyframes for fading in, staying, fading out, and restarting */
-@keyframes plugSlowFade {
-  0%   { opacity: 0.2; }
-  20%  { opacity: 1; }
+.card h3 {
+  /* Use relative units for font size */
+  font-size: 1.5rem;        /* Base size relative to root element */
+  max-width: 100%;          /* Don't overflow card width */
+  word-wrap: break-word;    /* Break long words if needed */
+  margin-bottom: 12px;      /* Keep space below title */
+  color: #333;              /* Dark gray for readability */
   
-  100% { opacity: 0.2; }
+  /* Make sure text adjusts to card size */
+  overflow-wrap: break-word;
+  hyphens: auto;            /* Allow hyphenation for long words */
 }
 
-/* Beginner-friendly: Style the water drop image to look like an icon */
-.water-drop-img {
-  width: 48px;         /* Set the width of the icon */
-  height: 48px;        /* Set the height of the icon */
-  display: block;      /* Make sure it behaves like a block element */
-  margin: 0 auto 12px auto; /* Center the icon and add space below */
-}
-
-/* Learn More Button Styles */
-.learn-more-btn {
-  display: block; /* Make the button take up its own line */
-  width: 180px;   /* Set a fixed width */
-  margin: 40px auto 30px auto; /* Center the button at the bottom with space */
-  padding: 14px 0;
-  background: #0071c5; /* Intel Blue */
-  color: #fff;
+/* Hide the timeline card <p> by default and style the pop-up */
+.timeline-card p {
+  display: none; /* Hide by default */
+  position: absolute; /* Position relative to the card */
+  left: 50%;          /* Center horizontally */
+  bottom: -10px;      /* Place just below the card */
+  transform: translate(-50%, 100%); /* Move below the card */
+  min-width: 220px;
+  max-width: 260px;
+  background: #fff;
+  color: #0071c5; /* Intel blue text */
+  border: 2px solid #0071c5; /* Intel blue border */
+  border-radius: 10px;
+  box-shadow: 0 0 16px 4px #00eaff88; /* Intel blue glow */
+  padding: 14px;
+  z-index: 10;
+  font-size: 16px;
   text-align: center;
-  text-decoration: none; /* Remove underline */
-  font-size: 1.1em;
-  font-weight: bold;
-  border-radius: 24px;
-  box-shadow: 0 4px 16px #0071c544;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-  letter-spacing: 1px;
+  pointer-events: none; /* Prevent mouse events */
 }
 
-/* Add a glowing effect on hover */
-.learn-more-btn:hover {
-  background: #00eaff;
-  color: #0071c5;
-  box-shadow: 0 0 16px #00eaff, 0 4px 24px #0071c544;
-  transform: scale(1.05);
+/* Show the <p> pop-up when hovering over the timeline card */
+.timeline-card:hover p {
+  display: block;
+}
+
+/* Make sure only timeline cards are positioned relative for the pop-up to work */
+.timeline-card {
+  position: relative;
+}
+
+/* Adjust size on smaller screens */
+@media (max-width: 600px) {
+  .card {
+    width: 90vw;       /* Full width on mobile */
+    min-height: 300px; /* Slightly shorter on mobile */
+  }
+  
+  .card h2 {
+    font-size: 20px;      /* Smaller year on mobile */
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;      /* Slightly smaller on mobile */
+  }
+  
+  .card p {
+    font-size: 14px;      /* Slightly smaller text on mobile */
+  }
 }

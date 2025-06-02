@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Add Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -32,85 +34,74 @@
     </div>
   </header>
 
-  <!-- Sustainability Goals Section with animated icons and geometric overlays -->
-  <section class="goals-section">
- 
-    <!-- Card 2: Recycling -->
-    <div class="goal-card fade-in delay1">
-      <div class="icon recycle"></div>
-      <h2>Recycling</h2>
-      <p>Intel recycles materials and promotes a circular economy to minimize waste.</p>
-    </div>
-    <!-- Card 3: Water Conservation -->
-    <div class="goal-card fade-in delay2">
-      <div class="water-drop"></div>
-      <h2>Water Conservation</h2>
-      <p>Intel conserves water and invests in water restoration projects worldwide.</p>
-    </div>
-    <!-- Card 1: Eco Plug (NEW) -->
-    <div class="goal-card fade-in delay3">
-      <div class="icon eco-plug">
-        <!--
-          Beginner-friendly SVG for an eco plug:
-          - The circular cord is at the bottom.
-          - The plug is centered above the circle.
-          - The two leaves are together, angled to look natural, and do not touch the plug prongs.
-        -->
-      <style>
-  .icon-wrapper {
-    position: relative;
-    width: 128px;
-    height: 128px;
-  }
-  .icon-wrapper div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-<div class="icon-wrapper">
-  <div class="cord">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14 44c0 9.94 8.06 18 18 18s18-8.06 18-18" fill="none" stroke="#4CAF50" stroke-width="4"/>
-    </svg>
-  </div>
-
-  <div class="leaf1">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 38c0-6 3-12 10-16-2 6-1 13-6 20-4-2-4-4-4-4z" fill="#4CAF50"/>
-    </svg>
-  </div>
-
-  <div class="leaf2">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 30c4 2 8 4 10 10-6-1-11-2-16-10 3 0 4 0 6 0z" fill="#4CAF50"/>
-    </svg>
-  </div>
-
-  <div class="plug-prong1">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <rect x="44" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
-    </svg>
-  </div>
-
-  <div class="plug-prong2">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <rect x="52" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
-    </svg>
-  </div>
-
-  <div class="plug-base">
-    <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <rect x="42" y="24" width="16" height="14" rx="3" fill="#4CAF50"/>
-    </svg>
-  </div>
-</div>
+  <!-- Sustainability Goals Section using Bootstrap for layout -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <!-- Recycling Card -->
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <!-- Custom icon using your CSS -->
+            <div class="icon recycle mx-auto mb-3"></div>
+            <h2 class="h5">Recycling</h2>
+            <p class="card-text">Intel recycles materials and promotes a circular economy to minimize waste.</p>
+          </div>
+        </div>
       </div>
-      <h2>Renewable Energy</h2>
-      <p>Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
+      <!-- Water Conservation Card -->
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <div class="water-drop mx-auto mb-3"></div>
+            <h2 class="h5">Water Conservation</h2>
+            <p class="card-text">Intel conserves water and invests in water restoration projects worldwide.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Renewable Energy Card with SVG Eco Plug -->
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <!-- Keep your SVG eco plug icon here -->
+            <div class="icon eco-plug mx-auto mb-3">
+              <div class="icon-wrapper">
+                <div class="cord">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 44c0 9.94 8.06 18 18 18s18-8.06 18-18" fill="none" stroke="#4CAF50" stroke-width="4"/>
+                  </svg>
+                </div>
+                <div class="leaf1">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 38c0-6 3-12 10-16-2 6-1 13-6 20-4-2-4-4-4-4z" fill="#4CAF50"/>
+                  </svg>
+                </div>
+                <div class="leaf2">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 30c4 2 8 4 10 10-6-1-11-2-16-10 3 0 4 0 6 0z" fill="#4CAF50"/>
+                  </svg>
+                </div>
+                <div class="plug-prong1">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="44" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+                  </svg>
+                </div>
+                <div class="plug-prong2">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="52" y="14" width="4" height="12" rx="1" fill="#4CAF50"/>
+                  </svg>
+                </div>
+                <div class="plug-base">
+                  <svg viewBox="0 0 64 64" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="42" y="24" width="16" height="14" rx="3" fill="#4CAF50"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <h2 class="h5">Renewable Energy</h2>
+            <p class="card-text">Intel uses renewable energy sources to power its operations and reduce carbon emissions.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -120,7 +111,7 @@
   <section class="timeline-container">
     <div class="timeline">
       <!-- Timeline cards (unchanged, for brevity) -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>1968</h2>
         <h3>Intel Founded</h3>
         <img src="img/Intel1.jpg" alt="Intel Founded" />
@@ -131,7 +122,7 @@
         </p>
       </div>
       <!-- Card 2: 1971 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>1971</h2>
         <h3>First Microprocessor</h3>
         <img src="img/Intel2.jpg" alt="First Microprocessor" />
@@ -142,7 +133,7 @@
         </p>
       </div>
       <!-- Card 3: 1978 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>1978</h2>
         <h3>8086 Processor</h3>
         <img src="img/intel3.png" alt="8086 Processor" />
@@ -152,7 +143,7 @@
         </p>
       </div>
       <!-- Card 4: 1985 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>1985</h2>
         <h3>386 Processor</h3>
         <img src="img/intel4-1.jpg" alt="386 Processor" />
@@ -163,7 +154,7 @@
         </p>
       </div>
       <!-- Card 5: 2006 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>2006</h2>
         <h3>Peak GHG Emissions</h3>
         <img src="img/intel5.jpg" alt="Peak GHG Emissions" />
@@ -175,7 +166,7 @@
         </p>
       </div>
       <!-- Card 6: 2020 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>2020</h2>
         <h3>RISE Strategy</h3>
         <img src="img/intel6.jpg" alt="RISE Strategy" />
@@ -186,7 +177,7 @@
         </p>
       </div>
       <!-- Card 7: 2022 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>2022</h2>
         <h3>Net-Zero By 2040</h3>
         <img src="img/scale.jpg" alt="Net-Zero By 2040" />
@@ -197,7 +188,7 @@
         </p>
       </div>
       <!-- Card 8: 2023 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>2023</h2>
         <h3>Renewable Electricity</h3>
         <img src="img/RE.jpg" alt="Renewable Electricity" />
@@ -208,7 +199,7 @@
         </p>
       </div>
       <!-- Card 9: 2024 -->
-      <div class="card">
+      <div class="card timeline-card">
         <h2>2024</h2>
         <h3>Sustainability Summit</h3>
         <img src="img/conf.jpg" alt="Sustainability Summit" />
@@ -227,5 +218,8 @@
      class="learn-more-btn" target="_blank">
     Learn More
   </a>
+
+  <!-- Add Bootstrap JS at the end of <body> (optional, for interactive Bootstrap features) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
