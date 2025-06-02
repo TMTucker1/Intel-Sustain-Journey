@@ -200,9 +200,9 @@ body {
   margin: 30px auto;         /* Center the container horizontally */
   overflow-x: auto;
   padding-bottom: 20px;
-  scroll-snap-type: x mandatory; /* Snap to cards when scrolling horizontally */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-  width: 1210px;             /* 4 cards * 250px + 3 gaps * 20px = 1040px */
+  width: 1200px;             /* 4 cards * 250px + 3 gaps * 20px = 1120px */
   max-width: 100%;           /* Prevents overflow on small screens */
 }
 
@@ -211,10 +211,11 @@ body {
   display: flex;
   gap: 20px;
   padding: 20px;
-  min-width: 1210px; /* 4 cards * 250px + 3 gaps * 20px = 1040px */
-  max-width: 1040px;
+  min-width: 1200px; /* 4 cards * 250px + 3 gaps * 20px = 1120px */
+  max-width: 1120px;
   overflow-x: auto;
-  margin: 0 auto;    /* Center the timeline inside the container */
+  margin: 0 auto;
+  scroll-snap-type: x mandatory; /* Make sure snap is also set here for some browsers */
 }
 
 /* Timeline Card Styles */
@@ -232,7 +233,7 @@ body {
   animation: fadeInUp 1s forwards;
   animation-delay: 1.2s;
   /* Make each card a snap point */
-  scroll-snap-align: start; /* Snap the start of each card to the container */
+  scroll-snap-align: start;
 }
 .card:hover {
   transform: translateY(-8px) scale(1.04);
