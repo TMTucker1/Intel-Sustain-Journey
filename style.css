@@ -5,11 +5,12 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  text-align: var(--text-align);
+  direction: inherit; /* Inherit direction from HTML */
 }
 
 /* Hero Section Styles */
 .hero {
-  /* Radial gradient background for the hero section only */
   /* The gradient is perfectly centered in the hero section */
   background: radial-gradient(circle at center,#0071c5 15%,  #97edf5 65%, #d0ddeb 100%);
   color: white;
@@ -63,14 +64,15 @@ body {
     cursor: pointer;
     min-height: 200px; /* Minimum height on all screens */
     height: auto; /* Allow height to adjust to content */
+    text-align: var(--text-align);
 }
 
 /* Hover effects for goal cards */
 .card.goal-card:hover {
     background-color: #f5f5f5;
     border: 2px solid #0071c5;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 113, 197, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(113, 203, 255, 0.966);
 }
 
 /* Animated icons (simple CSS for beginners) */
@@ -81,7 +83,9 @@ body {
   position: relative;
 } 
 @keyframes spin {
-  100% { transform: rotate(360deg);}
+  100% { 
+    transform: rotate(calc(360deg * var(--transform-direction))); 
+  }
 }
 .recycle::before, .recycle::after {
   content: '';
@@ -151,77 +155,133 @@ body {
   }
 }
 
-/* Timeline Container */
+/* Timeline Container - removed gradient background */
 .timeline-container {
   margin: 30px auto;
+  padding: 60px 0;
+  width: 90%;
+  max-width: 1400px;
+  /* Removed background gradient */
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Timeline track - where cards scroll */
+.timeline {
+  display: flex;
+  gap: 32px;  /* Space between cards */
+  padding: 30px 60px;
   overflow-x: auto;
-  padding-bottom: 20px;
-  width: 90%;           /* Changed from fixed width to percentage */
-  max-width: 1300px;    /* Maximum width on large screens */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  position: relative;
+  width: 100%;
 }
 
 /* Timeline Styles */
 .timeline {
   display: flex;
-  gap: 20px;           /* Slightly bigger gap between cards */
-  padding: 20px;
-  min-width: min-content; /* Changed from fixed width */
-  margin: 0 auto;
+  gap: 32px;  /* Bigger gap between cards */
+  padding: 30px 60px; /* More padding around cards */
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  position: relative;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
 }
 
-/* Timeline Card Styles */
+/* Add journey path behind cards */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #0071c5;
+  box-shadow: 0 0 10px #00eaff;
+  z-index: 1;
+  opacity: 50%;
+}
+
+/* Timeline cards - removed background color */
 .timeline-card {
-  background: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 20px;
-  width: 300px;        /* Fixed width for desktop */
-  min-height: 375px;   /* Taller to fit content */
-  max-height: none;    /* Remove max height restriction */
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  font-size: 16px;         /* Base font size for card content */
+  flex: 0 0 auto;
+  width: 320px;
+  min-height: 480px;
+  background: white;    /* Simple white background */
+  border-radius: 16px;
+  padding: 24px;
+  scroll-snap-align: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
+/* Card content sizing */
+.timeline-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* Hide scrollbar but keep functionality */
+.timeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 113, 197, 0.3);
+  border-radius: 20px;
+}
+
+/* Card hover effects */
+.timeline-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 12px 24px rgba(0, 113, 197, 0.25);
+}
+
+/* Year marker */
 .timeline-card h2 {
-  font-size: 24px;         /* Larger size for years */
-  margin-bottom: 4px;      /* Small space between year and event title */
-  color: #0071c5;         /* Intel blue for years */
+  color: #0071c5;
+  font-size: 28px;         /* Bigger year */
+  margin-bottom: 12px;
+  position: relative;
 }
 
-.timeline-card h3 {
-  /* Use relative units for font size */
-  font-size: 1.5rem;        /* Base size relative to root element */
-  max-width: 100%;          /* Don't overflow card width */
-  word-wrap: break-word;    /* Break long words if needed */
-  margin-bottom: 12px;      /* Keep space below title */
-  color: #333;              /* Dark gray for readability */
-  
-  /* Make sure text adjusts to card size */
-  overflow-wrap: break-word;
-  hyphens: auto;            /* Allow hyphenation for long words */
+/* Add connecting line from card to timeline */
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #0071c5;
+  transform: translateX(-50%);
 }
 
-/* Hide the timeline card <p> by default and style the pop-up */
+/* Hover popup styling */
 .timeline-card p {
-  display: none; /* Hide by default */
-  position: absolute; /* Position relative to the card */
-  left: 50%;          /* Center horizontally */
-  bottom: 50%;      /* Place just below the card */
-  transform: translate(-50%, 100%); /* Move below the card */
-  min-width: 220px;
-  max-width: 350px;
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translate(-50%, 100%);
+  width: 280px;
   background: #fff;
-  color: #0071c5; /* Intel blue text */
-  border: 2px solid #0071c5; /* Intel blue border */
+  padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 0 16px 4px #00eaff88; /* Intel blue glow */
-  padding: 14px;
-  z-index: 10;
-  font-size: 16px;
+  border: 2px solid #0071c5;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
+  z-index: 3;
   text-align: center;
-  pointer-events: none; /* Prevent mouse events */
 }
 
 /* Show the <p> pop-up when hovering over the timeline card */
@@ -294,5 +354,15 @@ body {
             margin-bottom: 0;
         }
     }
+  
+  .timeline-card {
+    width: 280px;
+    min-height: 420px;
+  }
+  
+  .timeline {
+    gap: 24px;
+    padding: 20px;
+  }
 }
 
