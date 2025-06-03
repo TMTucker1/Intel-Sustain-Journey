@@ -1,7 +1,7 @@
 /* --- 1. Palette and Backgrounds --- */
 body {
   /* Keep the body background simple */
-  background: #d5e0ec;
+  background: #45a7f7;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -46,7 +46,7 @@ body {
   justify-content: center;
   gap: 20px;
   min-height: 400px; /* Ensure enough height for content */
-  background: rgba(255,255,255,0.7);
+  background:transparent;
   padding: 30px 10px;
   margin: 0 auto 30px auto;
   border-radius: 18px;
@@ -65,6 +65,21 @@ body {
     min-height: 200px; /* Minimum height on all screens */
     height: auto; /* Allow height to adjust to content */
     text-align: var(--text-align);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for card body to push button to bottom */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Push the button to the bottom */
+.card-body .btn-primary {
+    margin-top: auto;     /* This pushes the button to the bottom */
+    align-self: center;   /* Center the button horizontally */
 }
 
 /* Hover effects for goal cards */
@@ -155,164 +170,211 @@ body {
   }
 }
 
-/* Timeline Container - removed gradient background */
+/* Timeline Container */
 .timeline-container {
-  margin: 30px auto;
-  padding: 40px 0;
-  width: 90%;
-  max-width: 1400px;
-  /* Removed background gradient */
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
+    margin: 30px auto;
+    padding: 40px 0;
+    width: 95%;
+    background: transparent;
+    position: relative;
+    overflow: hidden; /* Contain the scrolling area */
 }
 
-/* 1. Combined Timeline Styles */
+/* Timeline track - Fixed scroll snap */
 .timeline {
     display: flex;
     gap: 32px;
-    padding: 30px 60px;  /* Add more padding on sides */
+    padding: 30px 60px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
+    scroll-padding: 10px; /* Add padding for snap points */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     position: relative;
     width: 100%;
-    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; /* Nicer scrollbar on Firefox */
 }
 
-/* Update Timeline Card Styles */
+/* Timeline cards - Fixed snap alignment */
 .timeline-card {
-    flex: 0 0 auto;
+    flex: 0 0 320px; /* Don't grow or shrink, stay at 320px */
     width: 320px;
     min-height: 380px;
-    background: rgb(197, 224, 248);
+    background: white;
     border-radius: 16px;
     padding: 24px;
-    scroll-snap-align: start;  /* Changed from 'center' to 'start' */
     position: relative;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    scroll-snap-align: start; /* Snap to start of card */
 }
 
-/* Add padding to first and last cards for better scrolling */
-.timeline-card:first-child {
-    margin-left: 60px;  /* Space for first card */
-}
-
-.timeline-card:last-child {
-    margin-right: 60px;  /* Space for last card */
-}
-
-/* Add journey path behind cards */
-/* Move this from .timeline::before to .timeline-container::before */
-.timeline-container::before {
-  content: '';
-  position: absolute;
-  top: 20%; /* Center the line vertically */
-  left: 0;
-  right: 0;
-  height: 4px; /* Thickness of the line */
-  background: #0071c5; /* Intel blue */
-  box-shadow: 0 0 10px #00eaff;
-  z-index: 1;
-  opacity: 50%;
-  transform: translateY(-50%); /* Perfectly center the line */
-}
-
-/* Card content sizing */
-.timeline-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-/* Hide scrollbar but keep functionality */
+/* Hide scrollbar on Webkit browsers but keep functionality */
 .timeline::-webkit-scrollbar {
-  height: 8px;
+    height: 8px;
 }
 
 .timeline::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 .timeline::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 113, 197, 0.3);
-  border-radius: 20px;
+    background-color: rgba(0, 113, 197, 0.3);
+    border-radius: 20px;
 }
 
-/* Card hover effects */
-.timeline-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 12px 24px rgba(0, 113, 197, 0.25);
-}
-
-/* Year marker */
-.timeline-card h2 {
-  color: #0071c5;
-  font-size: 28px;         /* Bigger year */
-  margin-bottom: 12px;
+/* Timeline cards */
+.timeline-card {
+  flex: 0 0 auto;
+  width: 320px;
+  min-height: 380px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Add connecting line from card to timeline - now at the top of the card */
-.timeline-card::after {
+/* Add connector lines from cards to timeline */
+.timeline-card::before {
+  /* Create the connector line */
   content: '';
   position: absolute;
-  /* Place the line at the top of the card */
-  top: -30px;           /* Move above the card */
-  left: 50%;            /* Center horizontally */
-  width: 2px;           /* Line thickness */
-  height: 25px;         /* Line length */
-  background: #0071c5;  /* Intel blue color */
-  transform: translateX(-50%);
+  width: 2px;             /* Line width */
+  height: 30px;           /* Line length */
+  background: #0071c5;    /* Intel blue */
+  left: 50%;              /* Center horizontally */
+  top: -30px;             /* Position above card */
+  transform: translateX(-50%);  /* Perfect center alignment */
 }
 
-/* 3. Fixed Popup Styling */
+/* Timeline connecting line */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  opacity: 50%;
+  height: 4px;
+  background: #0071c5;
+  box-shadow: 0 0 10px #00eaff;
+  z-index: 1;
+}
+
+/* Adjust connector lines for tablet view */
+@media (max-width: 768px) {
+  .timeline-card::before {
+    /* Reposition for vertical timeline */
+    width: 30px;          /* Now horizontal line */
+    height: 2px;          /* Thinner line */
+    left: -30px;          /* Position to the left */
+    top: 50%;             /* Center vertically */
+    transform: translateY(-50%);  /* Perfect vertical alignment */
+  }
+}
+/* Style the popup that appears on hover */
 .timeline-card p {
-    /* Hide by default */
-    display: none;
-    
-    /* Position the popup */
-    position: absolute;
-    left: 50%;           
-    bottom: 150px;       /* Position from bottom of card */
-    transform: translate(-50%, 100%);  /* Center and move below */
-    
-    /* Popup size and style */
-    width: 280px;        
-    padding: 15px;
-    margin: 0;           /* Remove any margin */
-    
-    /* Visual style */
-    background: #fff;
-    border-radius: 10px;
-    border: 2px solid #0071c5;
-    box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
-    
-    /* Text styling */
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.4;
-    
-    /* Keep popup on top */
-    z-index: 10;
+  display: none;  /* Hidden by default */
+  position: absolute;
+  left: 50%;
+  bottom: 190px;  /* Position below the card */
+  transform: translate(-50%, 100%);  /* Center horizontally and move below */
+  width: 280px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #0071c5;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
+  z-index: 10;
+  text-align: center;
 }
 
-/* Remove conflicting hover styles */
-.timeline-card:hover {
-    transform: translateY(-15px);
-}
-
-/* Show popup on hover */
+/* Show popup when hovering over the card */
 .timeline-card:hover p {
-    display: block;
+  display: block;
 }
 
-/* Make sure timeline cards have proper positioning */
-.timeline-card {
-    position: relative;
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+/* Add hover effect to timeline cards */
+.timeline-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 113, 197, 0.25);
+  transition: all 0.3s ease;
+}
+/* Media query for medium screens (tablets) */
+@media (max-width: 768px) {
+  /* Stack cards vertically */
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Make cards full width */
+  .timeline-card {
+    width: 90%;
+    max-width: 500px;
+    min-height: auto;
+    margin: 0 auto;
+  }
+
+  /* Move timeline line to left side */
+  .timeline-container::before {
+    top: 0;
+    left: 40px;
+    width: 4px;
+    height: 100%;
+    opacity: 0.5;
+  }
+
+  /* Adjust connecting lines for vertical layout */
+  .timeline-card::after {
+    top: 50%;
+    left: -30px;
+    width: 25px;
+    height: 2px;
+  }
+}
+
+/* Media query for small screens (phones) */
+@media (max-width: 576px) {
+  /* Hide timeline line on very small screens */
+  .timeline-container::before {
+    display: none;
+  }
+
+  /* Make cards even more compact */
+  .timeline-card {
+    width: 95%;
+    padding: 16px;
+  }
+
+  /* Hide connecting lines */
+  .timeline-card::after {
+    display: none;
+  }
+}
+
+/* Always show full card content */
+.timeline-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* Adjust text sizes for better readability */
+.timeline-card h2 {
+  font-size: calc(20px + 1vw);
+}
+
+.timeline-card h3 {
+  font-size: calc(16px + 0.5vw);
+}
+
+.timeline-card p {
+  font-size: calc(14px + 0.2vw);
 }
 
 /* Sustainability Goals Section using Bootstrap for layout */
@@ -390,3 +452,52 @@ body {
   transform: translateY(-2px);
 }
 
+/* Subscribe button styling */
+.subscribe-btn {
+  display: block;
+  width: 180px;
+  margin: 20px auto 40px auto;
+  padding: 14px 0;
+  background: #93f0fdd2;
+  color: #00060a;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px #0071c544;
+  transition: all 0.3s;
+}
+
+/* Subscribe button hover effect */
+.subscribe-btn:hover {
+  background: #0071c5;
+  color: #fff;
+  box-shadow: 0 0 16px #40bbc6, 0 4px 24px #0071c544;
+  transform: scale(1.05);
+}
+
+/* Style the modal */
+.modal-content {
+  border-radius: 16px;
+  border: 2px solid #0071c5;
+}
+
+.modal-header {
+  background: #0071c5;
+  color: white;
+  border-radius: 14px 14px 0 0;
+}
+
+/* Close button color */
+.btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.card-footer {
+  background: #0071c5;
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px;
+}
