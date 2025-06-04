@@ -336,5 +336,10 @@
 
   <!-- Add Bootstrap JS at the end of <body> (optional, for interactive Bootstrap features) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  // This script sets the page language to the user's browser language
+  // For beginners: navigator.language gets the browser's preferred language
+  document.documentElement.lang = navigator.language || navigator.userLanguage || "en";
+</script>
 </body>
 </html>
