@@ -506,20 +506,25 @@ body {
 /* This makes the font a bit larger and bolder for beginners */
 .accordion-button {
   font-style: oblique;
-  font-size: .7rem;      /* Make the text a bit bigger */
+  font-size: .5rem;      /* Make the text a bit bigger */
   font-weight: bold;      /* Make the text bold */
-  color: #0070c55b; 
-  opacity: 50%;        /* Intel blue for the text */
+  font-family: 'Courier New', Courier, monospace;
+  color: #0070c5ad; 
+  opacity: 60%;        /* Intel blue for the text */
   background-color: #eaf6fb; /* Light blue background */
   border-radius: 8px;     /* Rounded corners */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;    /* Prevent text from wrapping */
   transition: background 0.2s;
 }
 
 /* Change background and text color on hover/focus */
 .accordion-button:hover,
 .accordion-button:focus {
-  background-color: #67b3ec8d;
-  color: #050505;
+  opacity: 100%;
+  background-color: #95c8f08d;
+  color: #000000;
 }
 
 /* Intel Logo */
