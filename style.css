@@ -28,10 +28,13 @@ body {
 
 /* Make the logo a bit smaller and centered */
 .intel-logo {
-  width: 120px;
-  margin-bottom: 10px;
-  z-index: 2;
-  position: relative;
+  width: 120px;         /* Set the logo width */
+  margin-bottom: 10px;  /* Add space below the logo */
+  z-index: 2;           /* Make sure it appears above backgrounds */
+  position: relative;   /* Needed for z-index to work */
+  display: block;       /* Make the logo a block element */
+  margin-left: auto;    /* Center horizontally */
+  margin-right: auto;
 }
 
 /* Hero content above triangles */
